@@ -17,6 +17,11 @@ incrR(X,Y) :- incr(X,Y), legal(X).
 
 % Problem 3
 
-add(f0(null),f0(null),f0(null)).
 add(f0(null),P,P).
 add(P1,P2,P3) :- incrR(P0,P1), incrR(P2,P2succ), add(P0,P2succ,P3).
+
+% Problem 4
+
+mult(f1(null),P,P).
+mult(f0(null),P,f0(null)).
+mult(P1,P2,P3) :- incrR(X,P1), mult(X,P2,Y), add(P2,Y,P3).
