@@ -32,3 +32,9 @@ revcon(X,Y,Z) :- X = f0(W), revcon(W,f0(Y),Z).
 revcon(X,Y,Z) :- X = f1(W), revcon(W,f1(Y),Z).
 
 revers(P,RevP) :- revcon(P,null,RevP).
+
+% Problem 6
+
+normalize(null,f0(null)).
+normalize(P,Pn) :- revers(P,RevP), RevP = f1(X), P = Pn.
+normalize(P,Pn) :- revers(P,RevP), RevP = f0(X), revers(X,Y), normalize(Y,Pn).
